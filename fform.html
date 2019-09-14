@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>webpage</title>
+
+</head>
+
+<style> legend {
+background-color: purple;
+
+}
+
+body{
+
+background-color: rgb(121,255,255);
+
+}
+
+.form_sub{ position: relative; padding: 40px; margin: 50px;
+background-color: rgb(130,255,130);
+
+}
+
+input{
+
+position: relative; background-color: yellow;
+ 
+border-radius: 10px; border: 2px solid black;
+}
+
+input[type=range]{
+
+background-color: blue !important;
+
+}
+
+#me{
+
+background-color: rgb(0,210,210);
+
+}
+
+#my{
+
+background-color: rgb(0,210,210);
+
+}
+
+textarea{ width: 100%;
+}
+
+#shreya3{
+
+background-color: rgb(0,210,210); border-radius: 10px 0px 10px 0px;
+}
+
+#shreya2{
+
+background-color: rgb(0,210,210); background-color: rgb(30,155,67); border-radius: 10px 0px 10px 0px; border: 2px solid black;
+}
+
+#shreya1{
+
+background-color: rgb(0,210,210);
+ 
+border-radius: 10px 0px 10px 0px;
+
+}
+
+#shreya{
+
+background-color: rgb(0,210,210); background-color: rgb(30,155,67); border-radius: 10px 0px 10px 0px; border: 2px solid black;
+}
+
+center{
+
+position: relative;
+
+}
+
+</style>
+
+<body>
+
+<div class="form_sub">
+
+<form name="myform" method="post" action="php.php" enctype="multipart/form-data">
+
+<fieldset>
+
+<legend>Personal information </legend>
+
+<b>First name:*</b>
+
+<input type="text" name="firstname" placeholder="First name"><br><br>
+
+<b>Last name:*</b>
+
+<input type="text" name="lastname" placeholder="Last name"><br>
+
+<br><b>Gender<br>
+
+<input type="radio" name="gender" value="male"> Male<br>
+
+<input type="radio" name="gender" value="female"> Female<br>
+
+<input type="radio" name="gender" value="other">Other<br><br>
+
+<b>DOB:</b>
+
+<input type="date" name="dob" palceholder="DD/MM/YYYY"><br><br>
+ 
+Age(between 18 and 25)*:
+
+<input type="number" name="age" min="18" max="25"><br><br> E-mail*:
+<input type="email" name="email"><br><br> Personal Phone Number*:
+<input type="tel" name="tel"><br><br> Linked In Profile*:
+<input type="url" name="linkedin"><br><br> Your favourite colour*:
+<input type="color" id="mycolour">
+
+</fieldset>
+
+</b>
+
+<fieldset>
+
+<legend>Educational Qualification</legend>
+
+<input type="checkbox" name="Bachelor">
+
+<b>B.tech</b>
+
+<select name="B.Degree">
+
+<option value="bce" >BCE</option>
+
+<option value="bci">BCI</option>
+
+</select>
+
+<br><br>
+
+<input type="checkbox" name="Master">
+
+<b>M.tech</b>
+
+<select name="M.Degree">
+
+<option value="cse" >MCE</option>
+
+<option value="ci">MCI</option>
+
+</select>
+ 
+<br><br>
+
+<b>Area of interest*:</b>
+
+<input list="interests">
+
+<datalist id="interests">
+
+<option value="Machine learning">
+
+<option value="Web development">
+
+</datalist>
+
+</fieldset>
+
+<fieldset>
+
+<legend>Job Details</legend>
+
+<b>Years of Experience:</b>
+
+<input type="range" name="points" min="1" max="10"><br><br>
+
+<b>Job title*:</b>
+
+<input type="text"><br><br>
+
+<textarea name="job" rows="3" cols="10">
+
+</textarea>
+
+</fieldset>
+
+<p> Upload Your Resume Passport Size Image:
+
+<input type="file" name="image" id="me">
+
+</p>
+
+<p> Upload Your Adhaar Card:
+
+<input type="file" name="card" id="my">
+
+</p>
+
+</form>
+
+<center><button type="submit" name="validate" id="shreya3">Don't Validate</button></center><br><br>
+<center><button type="submit" onclick="validate()" name="js" id="shreya2">Submit Using JavaScript
+ 
+Validation</button></center><br><br>
+
+<center><button type="submit" name="php" id="shreya1" formaction="php.php">Submit Using PHP validation</button></center><br><br>
+<center><input type="reset" value="Reset Form" id="shreya"></center>
+
+</div>
+
+<script>
+
+function validate()
+
+{
+
+var fsname=document.forms["myform"].firstname.value; var lsname=document.forms["myform"].lastname.value; var date=document.forms["myform"].dob.value; validate_name(fsname,lsname);
+validate_year(date); validate_email(); validate_tel(); validate_url(); validate_color(); validate_education(); validate_job();
+}
+
+function validate_name(fname,lname)
+
+{
+
+if(fname.length <=10 && fname.length >=3 && lname.length<=10 && lname.length>=3)
+
+{
+
+var patt=/\d/g;
+
+var tes= fname.match(patt); console.log(tes);
+ 
+var tes1=lname.match(patt); if(tes==null && tes1==null)
+{
+
+}
+
+else
+
+alert("Invalid name");
+
+}
+
+else
+
+alert("Invalid name");
+
+}
+
+function validate_year(year)
+
+{
+
+var x= year.slice(0,4); if(x<1999)
+alert("DOB should be more than 1999");
+
+}
+
+function validate_email()
+
+{
+
+var email=document.forms["myform"].email.value; var re= /\S+@\S+\.\S+/;
+if(re.test(email))
+
+{
+
+}
+
+else
+
+alert("Invalid Email ID");
+
+}
+
+function validate_tel()
+ 
+{
+
+var phone=document.forms.myform.tel.value; if(phone.length==10)
+{
+
+}
+
+else
+
+{
+
+alert("Enter Valid phone number");
+
+}
+
+}
+
+function validate_url()
+
+{
+
+if(document.forms.myform.linkedin.value=="") alert("Enter Valid Linkedin Url");
+}
+
+function validate_color()
+
+{
+
+var x=document.getElementById("mycolour").value; if(x=="")
+alert("Invalid Color choosen");
+
+}
+
+function validate_education()
+
+{
+
+if(document.forms.myform.Bachelor.checked || document.forms.myform.Master.checked)
+
+{
+
+}
+
+else
+ 
+alert("Choose Educational Qualification");
+
+}
+
+function validate_job()
+
+{
+
+var x=document.forms.myform.job.value; if(x=="")
+{
+
+alert("Invalid Job");
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
+
